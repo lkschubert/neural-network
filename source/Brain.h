@@ -26,11 +26,15 @@ private:
 	/**
 	 * The amount of kneejerk reaction the system has when the secondary
 	 * thought would have produced the greatest outcome
+	 * should be 0<x<=1
 	 */
 	double adjustmentFactor;
 	
 	int firstChoice;
+	double firstChoiceStrength;
 	int secondChoice;
+	double secondChoiceStrength;
+	
 	
 public:
 	/**
@@ -47,6 +51,7 @@ public:
 	
 	/**
 	 * Returns the secondary choice
+	 * call after think
 	 */
 	int secondThought ();
 	

@@ -55,6 +55,12 @@ public:
 	 * Gets the last output without the cost of reevaluate
 	 */
 	double getOutput();
+	
+	
+	/**
+	 * Sets the input nodes
+	 */
+	void setInputs (std::vector<Neuron*>);
 
 
 };

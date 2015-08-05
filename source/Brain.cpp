@@ -38,7 +38,9 @@ int Brain::think(){
 		}
 	}
 	firstChoice = firstIndex;
+	firstChoiceStrength = firstStrength;
 	secondChoice = secondIndex;
+	secondChoiceStrength = secondStrength;
 	return firstChoice;
 }
 
@@ -49,7 +51,19 @@ int Brain::secondThought(){
 
 
 void Brain::adapt(){
-	
+	for(int i = layers.size() - 1; i >= 0; i++){
+		for(int j = 0; j < layers[i].size(); j++){
+			layers[i][j].clearBackProp();
+		}
+	}
+	double adjustment = (1 + adjustmentFactor) * (firstChoiceStrength - secondChoiceStrength) / 2;
+	outputs[firstChoice].adjustWeight(firstChoiceStrength - adjustment, learningRate);
+	outputs[secondChoice].adjustWeight(secondChoiceStrength + adjustment, learningRate);
+	for(int i = layers.size() - 1; i >= 0; i++){
+		for(int j = 0; j < layers[i].size(); j++){
+			layers[i][j].adjustWeight();
+		}
+	}
 }
 
 
