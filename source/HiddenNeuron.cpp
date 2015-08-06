@@ -4,6 +4,9 @@
  
 #include "HiddenNeuron.h"
 
+#include <cmath>
+#include <cstdlib>
+
 using namespace std;
 
 HiddenNeuron::HiddenNeuron(){
@@ -52,4 +55,27 @@ void HiddenNeuron::adjustWeight(double learningRate){
 
 double HiddenNeuron::getOutput(){
 	return output;
+}
+
+
+void HiddenNeuron::setInputs(std::vector<Neuron*> nInputs){
+	inputs = nInputs;
+}
+
+
+void HiddenNeuron::generateWeights(){
+	inputWeights.clear();
+	inputWeights.resize(inputs.size());
+	for(int i = 0; i < inputs.size(); i++){
+		inputWeights[i] = (double)rand() * 2 /(double)RAND_MAX - 1;
+	}
+}
+
+
+string HiddenNeuron::printWeights(){
+	string temp = "";
+	for (int i = 0; i < inputWeights.size(); i++){
+		temp += " " + to_string(inputWeights[i]) + " ";
+	}
+	return temp;
 }

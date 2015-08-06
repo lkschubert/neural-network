@@ -1,6 +1,6 @@
 #Default Makefile
 
-COMPILER = g++
+COMPILER = g++ -ggdb -std=c++11
 
 TARGET = neural-network
 SRCDIR = ./source

@@ -11,7 +11,7 @@ InputNeuron::InputNeuron(){
 }
 
 
-double InputNeuron::InputNeuron(){
+double InputNeuron::evaluate(){
 	return value;
 }
 
@@ -24,3 +24,4 @@ void InputNeuron::setValue(double nValue){
 double InputNeuron::getOutput(){
 	return value;
 }
+

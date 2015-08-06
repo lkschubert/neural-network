@@ -37,6 +37,15 @@ public:
 	 * Gets the last output without the cost of reevaluate
 	 */
 	double getOutput();
+	
+	
+	/**
+	 * Adds what is required for backwards propagation
+	 */
+	void addBackProp(double error, double weight){};
+	
+	
+	void generateWeights(){};
 
 };
 

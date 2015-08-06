@@ -6,14 +6,15 @@
 #define OUTPUTNEURON_H
 
 #include <vector>
-
+#include <string>
 #include "Neuron.h"
+
 
 class OutputNeuron : public Neuron {
 
 private:
 	std::vector<Neuron*> inputs;
-	std::vector<int> inputWeights;
+	std::vector<double> inputWeights;
 	
 	
 	double output;
@@ -48,7 +49,16 @@ public:
 	 */
 	void setInputs (std::vector<Neuron*>);
 	
-
+	
+	/**
+	 * Adds what is required for backwards propagation
+	 */
+	void addBackProp(double error, double weight){};
+	
+	
+	void generateWeights();
+	
+	std::string printWeights();
 
 };
 

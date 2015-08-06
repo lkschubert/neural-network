@@ -6,6 +6,7 @@
 #define HIDDENNEURON_H
 
 #include <vector>
+#include <string>
 
 #include "Neuron.h"
 
@@ -13,7 +14,7 @@ class HiddenNeuron : public Neuron {
 
 private:
 	std::vector<Neuron*> inputs;
-	std::vector<int> inputWeights;
+	std::vector<double> inputWeights;
 	
 	std::vector<double> outputErrors;
 	std::vector<double> outputWeights;
@@ -60,7 +61,16 @@ public:
 	/**
 	 * Sets the input nodes
 	 */
-	void setInputs (std::vector<Neuron*>);
+	void setInputs (std::vector<Neuron*> nInputs);
+	
+	
+	void generateWeights();
+	
+	
+	/**
+	 * Get weights
+	 */
+	std::string printWeights();
 
 
 };
