@@ -12,6 +12,7 @@ using namespace std;
 
 World::World(){
 	age = 0;
+	size = 10;
 }
 
 
