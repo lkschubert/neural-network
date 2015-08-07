@@ -11,6 +11,6 @@
 using namespace std;
 
 int main(int argc, char** argv){
-	Brain myBrain(10, 3, 15, 8);
+	Brain myBrain(800, 10, 400, 300);
 	return EXIT_SUCCESS;
 }

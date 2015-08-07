@@ -77,7 +77,7 @@ Brain::Brain(){
 }
 
 
-Brain::Brain(int nInputs, int nHiddenLayers, int nHiddenLayersSize, int nOuputs){
+Brain::Brain(int nInputs, int nHiddenLayers, int nHiddenLayersSize, int nOutputs){
 	//Generation phase
 	inputs.clear();
 	for(int i = 0; i < nInputs; i++){
@@ -87,16 +87,20 @@ Brain::Brain(int nInputs, int nHiddenLayers, int nHiddenLayersSize, int nOuputs)
 	layers.clear();
 	for(int i = 0; i < nHiddenLayers; i++){
 		vector<HiddenNeuron*> temp;
+		temp.clear();
 		for(int j = 0; j < nHiddenLayersSize; j++){
 			temp.push_back(new HiddenNeuron());
 		}
 		layers.push_back(temp);
 	}
 	outputs.clear();
-	for(int i = 0; i < nOuputs; i++){
+	for(int i = 0; i < nOutputs; i++){
 		outputs.push_back(new OutputNeuron());
 	}
 	
+	cout << "The inputs : " << inputs.size() << endl;
+	cout << "The layers : " << layers.size() << endl;
+	cout << "The outputs : " << outputs.size() << endl;
 	
 	//Linking phase
 	vector<Neuron*> tempA(layers[0].begin(), layers[0].end());
@@ -106,7 +110,8 @@ Brain::Brain(int nInputs, int nHiddenLayers, int nHiddenLayersSize, int nOuputs)
 	
 	for(int i = 0; i < layers.size() - 1; i++){
 		vector<Neuron*> tempB(layers[i + 1].begin(), layers[i + 1].end());
-		for(int j = 0; i < layers[i].size(); j++){
+		cout << "This layers is : " << layers[i].size();
+		for(int j = 0; j < layers[i].size(); j++){
 			layers[i][j]->setInputs(tempB);
 		}
 	}
