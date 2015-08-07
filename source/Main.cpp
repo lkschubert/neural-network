@@ -6,11 +6,13 @@
 #include <cstdlib>
 #include <vector>
 
-#include "Brain.h"
+#include "World.h"
 
 using namespace std;
 
 int main(int argc, char** argv){
-	
+	World myWorld;
+	myWorld.displayWorld();
 	return EXIT_SUCCESS;
+
 }

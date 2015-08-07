@@ -8,7 +8,6 @@
 class World {
 
 private :
-	char map[10][10];
 	int age;
 public :
 	/**
