@@ -77,6 +77,66 @@ Brain::Brain(){
 }
 
 
+Brain::Brain(int nInputs, int nHiddenLayers, int nHiddenLayersSize, int nOuputs){
+	//Generation phase
+	inputs.clear();
+	for(int i = 0; i < nInputs; i++){
+		inputs.push_back(new InputNeuron());
+	}
+	
+	layers.clear();
+	for(int i = 0; i < nHiddenLayers; i++){
+		vector<HiddenNeuron*> temp;
+		for(int j = 0; j < nHiddenLayersSize; j++){
+			temp.push_back(new HiddenNeuron());
+		}
+		layers.push_back(temp);
+	}
+	outputs.clear();
+	for(int i = 0; i < nOuputs; i++){
+		outputs.push_back(new OutputNeuron());
+	}
+	
+	
+	//Linking phase
+	vector<Neuron*> tempA(layers[0].begin(), layers[0].end());
+	for(int i = 0; i < outputs.size(); i++){
+		outputs[i]->setInputs(tempA);
+	}
+	
+	for(int i = 0; i < layers.size() - 1; i++){
+		vector<Neuron*> tempB(layers[i + 1].begin(), layers[i + 1].end());
+		for(int j = 0; i < layers[i].size(); j++){
+			layers[i][j]->setInputs(tempB);
+		}
+	}
+	
+	vector<Neuron*> tempC(inputs.begin(), inputs.end());
+	for(int i = 0; i < layers[layers.size() - 1].size(); i++){
+		layers[layers.size() - 1][i]->setInputs(tempC);
+	}
+	
+	//Randomize weights
+	srand(time(NULL));
+	
+	for(int i = 0; i < outputs.size(); i++){
+		outputs[i]->generateWeights();
+	}
+	
+	for(int i = 0; i < layers.size(); i++){
+		for(int j = 0; j < layers[i].size(); j++){
+			layers[i][j]->generateWeights();
+		} 
+	}
+	
+	learningRate = 10.0;
+	
+	adjustmentFactor = 0.75;
+	
+	
+}
+
+
 int Brain::think(){
 	int firstIndex = 0;
 	double firstStrength = 0.0;

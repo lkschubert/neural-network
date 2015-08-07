@@ -47,7 +47,7 @@ public:
 	/**
 	 * Secondary Constructor
 	 */
-	Brain (int inputs, int hiddenLayers, int hiddenLayersSize, int output);
+	Brain (int nInputs, int nHiddenLayers, int nHiddenLayersSize, int nOuputs);
 	
 	
 	/**
