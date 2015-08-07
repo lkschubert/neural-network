@@ -6,7 +6,6 @@
 #include <cstdlib>
 #include <vector>
 
-#include "Brain.h"
 
 using namespace std;
 
