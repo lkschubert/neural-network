@@ -12,6 +12,7 @@
 class World {
 
 private :
+	int size;
 	int age;
 	int plant[2];
 	int bunny[2];
