@@ -127,7 +127,7 @@ Brain::Brain(int nInputs, int nHiddenLayers, int nHiddenLayersSize, int nOutputs
 		} 
 	}
 	
-	learningRate = .5;
+	learningRate = .99;
 	
 	
 }
