@@ -16,7 +16,7 @@ private :
 	int age;
 	int plant[2];
 	int bunny[2];
-	Brain bunnyBrain;
+	Brain* bunnyBrain;
 
 public :
 	/**
