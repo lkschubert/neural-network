@@ -7,20 +7,27 @@
 
 #include <vector>
 
-#include "Objects.h"
+#include "Brain.h"
 
 class World {
 
 private :
 	int age;
-	std::vector<std::vector<Objects> > objects;
+	int[2] plant;
+	int[2] bunny;
+	Brain bunnyBrain;
+
 public :
 	/**
 	 * Default constructor
 	 */
 	World ();
 
-
+	/**
+	 * Update
+	 */
+	void update ();
+	
 	/**
 	 * Display world
 	 */

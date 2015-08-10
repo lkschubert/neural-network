@@ -12,7 +12,11 @@ using namespace std;
 
 int main(int argc, char** argv){
 	World myWorld;
-	myWorld.displayWorld();
+	while(true){
+		myWorld.displayWorld();
+		cin.get();
+		myWorld.update();
+	}
 	return EXIT_SUCCESS;
 
 }
