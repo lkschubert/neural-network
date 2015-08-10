@@ -24,17 +24,8 @@ private:
 	 */
 	double learningRate;
 	
-	/**
-	 * The amount of kneejerk reaction the system has when the secondary
-	 * thought would have produced the greatest outcome
-	 * should be 0<x<=1
-	 */
-	double adjustmentFactor;
 	
 	int firstChoice;
-	double firstChoiceStrength;
-	int secondChoice;
-	double secondChoiceStrength;
 	
 	
 public:
@@ -56,18 +47,11 @@ public:
 	int think ();
 	
 	
-	/**
-	 * Returns the secondary choice
-	 * call after think
-	 */
-	int secondThought ();
-	
 	
 	/**
-	 * This is the real big part of the operation
-	 * Only call if second option is better
+	 * Tell this which output should have fired
 	 */
-	void adapt ();
+	void adapt (int target);
 	
 	
 	/**

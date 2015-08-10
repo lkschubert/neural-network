@@ -71,8 +71,6 @@ Brain::Brain(){
 	
 	learningRate = 10.0;
 	
-	adjustmentFactor = 0.75;
-	
 	
 }
 
@@ -131,53 +129,34 @@ Brain::Brain(int nInputs, int nHiddenLayers, int nHiddenLayersSize, int nOutputs
 	
 	learningRate = .5;
 	
-	adjustmentFactor = 0.75;
-	
 	
 }
 
 
 int Brain::think(){
 	int firstIndex = 0;
-	double firstStrength = 0.0;
-	int secondIndex = 0;
-	double secondStrength = 0.0;
 	
 	for(int i = 0; i < outputs.size(); i++){
 		double temp = outputs[i]->evaluate();
 		if(temp > firstStrength){
-			secondIndex = firstIndex;
-			secondStrength = firstStrength;
 			firstIndex = i;
 			firstStrength = temp;
 		}
-		else if(temp > secondStrength){
-			secondIndex = i;
-			secondStrength = temp;
-		}
 	}
 	firstChoice = firstIndex;
-	firstChoiceStrength = firstStrength;
-	secondChoice = secondIndex;
-	secondChoiceStrength = secondStrength;
 	return firstChoice;
 }
 
 
-int Brain::secondThought(){
-	return secondChoice;
-}
 
-
-void Brain::adapt(){
+void Brain::adapt(int target){
 	for(int i = 0; i < layers.size(); i++){
 		for(int j = 0; j < layers[i].size(); j++){
 			layers[i][j]->clearBackProp();
 		}
 	}
-	double adjustment = (1 + adjustmentFactor) * (firstChoiceStrength - secondChoiceStrength) / 2;
-	outputs[firstChoice]->adjustWeight(firstChoiceStrength - adjustment, learningRate);
-	outputs[secondChoice]->adjustWeight(secondChoiceStrength + adjustment, learningRate);
+	outputs[firstChoice]->adjustWeight(0, learningRate);
+	outputs[target]->adjustWeight(1, learningRate);
 	for(int i = 0; i < layers.size(); i++){
 		for(int j = 0; j < layers[i].size(); j++){
 			
