@@ -65,11 +65,11 @@ void World::update(){
 			break;
 	}
 	
-	char temp;
+	char* temp;
 	int myDecision = 0;
 	cout << "What would you do : " ;
 	cin >> temp;
-	myDecision = (int)temp;
+	myDecision = (int)temp[0];
 	if(decision != myDecision)
 		bunnyBrain->adapt(myDecision);
 	
