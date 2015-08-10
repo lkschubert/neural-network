@@ -37,6 +37,7 @@ void World::displayWorld(){
 		}
 		cout << endl;
 	}
+	cout << "Day : " << age << "\n";
 }
 
 
