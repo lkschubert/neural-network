@@ -82,6 +82,8 @@ void World::update(){
 	if(decision != myDecision && myDecision < 4)
 		bunnyBrain->adapt(myDecision);
 	else if (myDecision == 4){
+		plant[0] = rand() % size;
+		plant[1] = rand() % size;
 		bunny[0] = rand() % size;
 		bunny[1] = rand() % size;
 	}
