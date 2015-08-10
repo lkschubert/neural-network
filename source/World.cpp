@@ -74,6 +74,7 @@ void World::update(){
 			break;
 	}
 	
+	cout << tempA[0] << " " << tempA[1] << endl;
 	bunny[0] = tempA[0];
 	bunny[1] = tempA[1];
 	
