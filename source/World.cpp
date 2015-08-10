@@ -69,12 +69,16 @@ void World::update(){
 	
 	switch (secondThought){
 		case 0: (bunny[0] > 0) ? tempB[0] = bunny[0] - 1 : tempB[0] = bunny[0];
+			cout << "Think up" << endl;
 			break;
 		case 1: (bunny[1] > 0) ? tempB[1] = bunny[1] - 1 : tempB[1] = bunny[1];
+			cout << "Think left" << endl;
 			break;	
 		case 2: (bunny[0] < size - 1) ? tempB[0] = bunny[0] + 1 : tempB[0] = bunny[0];
+			cout << "Think down" << endl;
 			break;
 		case 3: (bunny[1] < size - 1) ? tempB[1] = bunny[1] + 1 : tempB[1] = bunny[1];
+			cout << "Think right" << endl;
 			break;
 	}
 	
