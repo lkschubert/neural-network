@@ -46,14 +46,15 @@ void World::update(){
 	vector<double> inputs;
 	inputs.clear();
 	
-	double positiveY = (plant[0] - bunny[0] > 0) ? (double)abs(plant[0] - bunny[0]) / (double) size : 0;
-	double negativeY = (plant[0] - bunny[0] < 0) ? (double)abs(plant[0] - bunny[0]) / (double) size : 0;
-	double positiveX = (plant[1] - bunny[1] < 0) ? (double)abs(plant[1] - bunny[1]) / (double) size : 0;
-	double negativeX = (plant[1] - bunny[1] > 0) ? (double)abs(plant[1] - bunny[1]) / (double) size : 0;
-	inputs.push_back(positiveY);
-	inputs.push_back(negativeY);
-	inputs.push_back(positiveX);
-	inputs.push_back(negativeX);
+	double inputs[4];
+	inputsT[0] = (plant[0] - bunny[0] > 0) ? (double)abs(plant[0] - bunny[0]) / (double) size : 0;
+	inputsT[1] = (plant[0] - bunny[0] < 0) ? (double)abs(plant[0] - bunny[0]) / (double) size : 0;
+	inputsT[2]= (plant[1] - bunny[1] < 0) ? (double)abs(plant[1] - bunny[1]) / (double) size : 0;
+	inputsT[3] = (plant[1] - bunny[1] > 0) ? (double)abs(plant[1] - bunny[1]) / (double) size : 0;
+	inputs.push_back(inputsT[0]);
+	inputs.push_back(inputsT[1]);
+	inputs.push_back(inputsT[2]);
+	inputs.push_back(inputsT[3]);
 	bunnyBrain->setInputs(inputs);
 	int decision = bunnyBrain->think();
 	int tempA[2] = {bunny[0], bunny[1]};
@@ -74,21 +75,25 @@ void World::update(){
 	
 	bunny[0] = tempA[0];
 	bunny[1] = tempA[1];
-	char temp;
-	int myDecision = 0;
-	cout << "What would you do : " ;
-	temp = getchar();
-	myDecision = (int)temp - 48;
-	if(decision != myDecision && myDecision < 4)
-		bunnyBrain->adapt(myDecision);
-	else if (myDecision == 4){
+	
+	if(age < 10000){
+		int best = 0;
+		double largest = 0;
+		for(int i = 0; i < 4; i++){
+			if(inputsT[i] > largest){
+				largest = inputsT[i];
+				best = i;
+			}
+		}
+		if(decision != best){
+			bunnyBrain->adapt(best);
+		}
+	}
+	if (bunny[0] == plant[0] && bunny[1] == plant[1]){
 		plant[0] = rand() % size;
 		plant[1] = rand() % size;
 		bunny[0] = rand() % size;
 		bunny[1] = rand() % size;
-	}
-	else if (myDecision == 5){
-
 	}
 	
 }
