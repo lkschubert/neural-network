@@ -46,7 +46,7 @@ void World::update(){
 	vector<double> inputs;
 	inputs.clear();
 	
-	double inputs[4];
+	double inputsT[4];
 	inputsT[0] = (plant[0] - bunny[0] > 0) ? (double)abs(plant[0] - bunny[0]) / (double) size : 0;
 	inputsT[1] = (plant[0] - bunny[0] < 0) ? (double)abs(plant[0] - bunny[0]) / (double) size : 0;
 	inputsT[2]= (plant[1] - bunny[1] < 0) ? (double)abs(plant[1] - bunny[1]) / (double) size : 0;
