@@ -46,10 +46,10 @@ void World::update(){
 	vector<double> inputs;
 	inputs.clear();
 	
-	positiveY = (plant[0] - bunny[0] > 0) (double)abs(plant[0] - bunny[0]) / (double) size : 0;
-	negativeY = (plant[0] - bunny[0] < 0) (double)abs(plant[0] - bunny[0]) / (double) size : 0;
-	postiveX = (plant[1] - bunny[1] < 0) (double)abs(plant[1] - bunny[1]) / (double) size : 0;
-	negativeX = (plant[1] - bunny[1] > 0) (double)abs(plant[1] - bunny[1]) / (double) size : 0;
+	double positiveY = (plant[0] - bunny[0] > 0) ? (double)abs(plant[0] - bunny[0]) / (double) size : 0;
+	double negativeY = (plant[0] - bunny[0] < 0) ? (double)abs(plant[0] - bunny[0]) / (double) size : 0;
+	double postiveX = (plant[1] - bunny[1] < 0) ? (double)abs(plant[1] - bunny[1]) / (double) size : 0;
+	double negativeX = (plant[1] - bunny[1] > 0) ? (double)abs(plant[1] - bunny[1]) / (double) size : 0;
 	inputs.push_back(positiveY);
 	inputs.push_back(negativeY);
 	inputs.push_back(positiveX);
