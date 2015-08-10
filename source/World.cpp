@@ -18,7 +18,7 @@ World::World(){
 	plant[1] = rand() % size;
 	bunny[0] = rand() % size;
 	bunny[1] = rand() % size;
-	bunnyBrain = new Brain(2, 2, 4, 4);
+	bunnyBrain = new Brain(4, 2, 8, 4);
 }
 
 
@@ -45,8 +45,15 @@ void World::update(){
 	age ++;
 	vector<double> inputs;
 	inputs.clear();
-	inputs.push_back((double)plant[0] - bunny[0] / (double) size);
-	inputs.push_back((double)plant[1] - bunny[1] / (double) size);
+	
+	positiveY = (plant[0] - bunny[0] > 0) (double)abs(plant[0] - bunny[0]) / (double) size : 0;
+	negativeY = (plant[0] - bunny[0] < 0) (double)abs(plant[0] - bunny[0]) / (double) size : 0;
+	postiveX = (plant[1] - bunny[1] < 0) (double)abs(plant[1] - bunny[1]) / (double) size : 0;
+	negativeX = (plant[1] - bunny[1] > 0) (double)abs(plant[1] - bunny[1]) / (double) size : 0;
+	inputs.push_back(positiveY);
+	inputs.push_back(negativeY);
+	inputs.push_back(positiveX);
+	inputs.push_back(negativeX);
 	bunnyBrain->setInputs(inputs);
 	int decision = bunnyBrain->think();
 	int tempA[2] = {bunny[0], bunny[1]};
