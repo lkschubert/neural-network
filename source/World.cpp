@@ -72,7 +72,14 @@ void World::update(){
 	cout << "What would you do : " ;
 	temp = getchar();
 	myDecision = (int)temp - 48;
-	if(decision != myDecision && myDecision != 4)
+	if(decision != myDecision && myDecision < 4)
 		bunnyBrain->adapt(myDecision);
+	else if (myDecision == 4){
+		bunny[0] = rand() % size;
+		bunny[1] = rand() % size;
+	}
+	else if (myDecision == 5){
+
+	}
 	
 }
