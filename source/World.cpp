@@ -54,12 +54,16 @@ void World::update(){
 	int tempB[2] = {0, 0};
 	switch (decision){
 		case 0: (bunny[0] > 0) ? tempA[0] = bunny[0] - 1 : tempA[0] = bunny[0];
+			cout << "Move up" << endl;
 			break;
 		case 1: (bunny[1] > 0) ? tempA[1] = bunny[1] - 1 : tempA[1] = bunny[1];
+			cout << "Move left" << endl;
 			break;	
 		case 2: (bunny[0] < size - 1) ? tempA[0] = bunny[0] + 1 : tempA[0] = bunny[0];
+			cout << "Move down" << endl;
 			break;
 		case 3: (bunny[1] < size - 1) ? tempA[1] = bunny[1] + 1 : tempA[1] = bunny[1];
+			cout << "Move right" << endl;
 			break;
 	}
 	
