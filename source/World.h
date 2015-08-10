@@ -13,8 +13,8 @@ class World {
 
 private :
 	int age;
-	int[2] plant;
-	int[2] bunny;
+	int plant[2];
+	int bunny[2];
 	Brain bunnyBrain;
 
 public :
