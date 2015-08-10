@@ -31,7 +31,11 @@ void World::displayWorld(){
 			else if(bunny[0] == i && bunny[1] == j){
 				cout << "&";
 			}
+			else {
+				cout << " ";
+			}
 		}
+		cout << endl;
 	}
 }
 
