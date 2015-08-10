@@ -77,7 +77,7 @@ void World::update(){
 	bunny[0] = tempA[0];
 	bunny[1] = tempA[1];
 	
-	if(abs(tempA[0] - plant[0]) + abs(tempA[1] - plant[1]) < abs(tempB[0] - plant[0]) + abs(tempB[1] - plant[1])){
+	if(abs(tempA[0] - plant[0]) + abs(tempA[1] - plant[1]) > abs(tempB[0] - plant[0]) + abs(tempB[1] - plant[1])){
 		cout << "Adapting!" << endl;
 		bunnyBrain->adapt();
 	}
