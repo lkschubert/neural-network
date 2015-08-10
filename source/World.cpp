@@ -34,3 +34,8 @@ void World::displayWorld(){
 		}
 	}
 }
+
+
+void World::update(){
+	
+}
