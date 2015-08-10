@@ -48,7 +48,7 @@ void World::update(){
 	
 	double positiveY = (plant[0] - bunny[0] > 0) ? (double)abs(plant[0] - bunny[0]) / (double) size : 0;
 	double negativeY = (plant[0] - bunny[0] < 0) ? (double)abs(plant[0] - bunny[0]) / (double) size : 0;
-	double postiveX = (plant[1] - bunny[1] < 0) ? (double)abs(plant[1] - bunny[1]) / (double) size : 0;
+	double positiveX = (plant[1] - bunny[1] < 0) ? (double)abs(plant[1] - bunny[1]) / (double) size : 0;
 	double negativeX = (plant[1] - bunny[1] > 0) ? (double)abs(plant[1] - bunny[1]) / (double) size : 0;
 	inputs.push_back(positiveY);
 	inputs.push_back(negativeY);
