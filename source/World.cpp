@@ -57,9 +57,9 @@ void World::update(){
 			break;
 		case 1: (bunny[1] > 0) ? tempA[1] = bunny[1] - 1 : tempA[1] = bunny[1];
 			break;	
-		case 2: (bunny[0] < size) ? tempA[0] = bunny[0] + 1 : tempA[0] = bunny[0];
+		case 2: (bunny[0] < size - 1) ? tempA[0] = bunny[0] + 1 : tempA[0] = bunny[0];
 			break;
-		case 3: (bunny[1] < size) ? tempA[1] = bunny[1] + 1 : tempA[1] = bunny[1];
+		case 3: (bunny[1] < size - 1) ? tempA[1] = bunny[1] + 1 : tempA[1] = bunny[1];
 			break;
 	}
 	
@@ -68,13 +68,12 @@ void World::update(){
 			break;
 		case 1: (bunny[1] > 0) ? tempB[1] = bunny[1] - 1 : tempB[1] = bunny[1];
 			break;	
-		case 2: (bunny[0] < size) ? tempB[0] = bunny[0] + 1 : tempB[0] = bunny[0];
+		case 2: (bunny[0] < size - 1) ? tempB[0] = bunny[0] + 1 : tempB[0] = bunny[0];
 			break;
-		case 3: (bunny[1] < size) ? tempB[1] = bunny[1] + 1 : tempB[1] = bunny[1];
+		case 3: (bunny[1] < size - 1) ? tempB[1] = bunny[1] + 1 : tempB[1] = bunny[1];
 			break;
 	}
 	
-	cout << tempA[0] << " " << tempA[1] << endl;
 	bunny[0] = tempA[0];
 	bunny[1] = tempA[1];
 	
