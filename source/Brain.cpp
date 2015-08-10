@@ -135,7 +135,7 @@ Brain::Brain(int nInputs, int nHiddenLayers, int nHiddenLayersSize, int nOutputs
 
 int Brain::think(){
 	int firstIndex = 0;
-	
+	double firstStrength = 0;
 	for(int i = 0; i < outputs.size(); i++){
 		double temp = outputs[i]->evaluate();
 		if(temp > firstStrength){
