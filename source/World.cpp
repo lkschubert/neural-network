@@ -65,12 +65,14 @@ void World::update(){
 			break;
 	}
 	
+	bunny[0] = tempA[0];
+	bunny[1] = tempA[1];
 	char temp;
 	int myDecision = 0;
 	cout << "What would you do : " ;
 	temp = getchar();
 	myDecision = (int)temp - 48;
-	if(decision != myDecision)
+	if(decision != myDecision && myDecision != 4)
 		bunnyBrain->adapt(myDecision);
 	
 }
