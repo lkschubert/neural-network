@@ -129,7 +129,7 @@ Brain::Brain(int nInputs, int nHiddenLayers, int nHiddenLayersSize, int nOutputs
 		} 
 	}
 	
-	learningRate = 10.0;
+	learningRate = .5;
 	
 	adjustmentFactor = 0.75;
 	
