@@ -69,7 +69,7 @@ void World::update(){
 	int myDecision = 0;
 	cout << "What would you do : " ;
 	cin >> temp;
-	myDecision = atoi(temp);
+	myDecision = (int)temp;
 	if(decision != myDecision)
 		bunnyBrain->adapt(myDecision);
 	
