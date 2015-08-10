@@ -45,8 +45,8 @@ void World::update(){
 	age ++;
 	vector<double> inputs;
 	inputs.clear();
-	inputs.push_back((double)abs(plant[0] - bunny[0]) / (double) size);
-	inputs.push_back((double)abs(plant[1] - bunny[1]) / (double) size);
+	inputs.push_back((double)plant[0] - bunny[0] / (double) size);
+	inputs.push_back((double)plant[1] - bunny[1] / (double) size);
 	bunnyBrain->setInputs(inputs);
 	int decision = bunnyBrain->think();
 	int secondThought = bunnyBrain->secondThought();
