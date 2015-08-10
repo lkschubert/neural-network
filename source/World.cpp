@@ -50,8 +50,8 @@ void World::update(){
 	bunnyBrain->setInputs(inputs);
 	int decision = bunnyBrain->think();
 	int secondThought = bunnyBrain->secondThought();
-	int tempA[2] = {0, 0};
-	int tempB[2] = {0, 0};
+	int tempA[2] = {bunny[0], bunny[1]};
+	int tempB[2] = {bunny[0], bunny[1]};
 	switch (decision){
 		case 0: (bunny[0] > 0) ? tempA[0] = bunny[0] - 1 : tempA[0] = bunny[0];
 			cout << "Move up" << endl;
