@@ -49,9 +49,7 @@ void World::update(){
 	inputs.push_back((double)plant[1] - bunny[1] / (double) size);
 	bunnyBrain->setInputs(inputs);
 	int decision = bunnyBrain->think();
-	int secondThought = bunnyBrain->secondThought();
 	int tempA[2] = {bunny[0], bunny[1]};
-	int tempB[2] = {bunny[0], bunny[1]};
 	switch (decision){
 		case 0: (bunny[0] > 0) ? tempA[0] = bunny[0] - 1 : tempA[0] = bunny[0];
 			cout << "Move up" << endl;
@@ -67,27 +65,12 @@ void World::update(){
 			break;
 	}
 	
-	switch (secondThought){
-		case 0: (bunny[0] > 0) ? tempB[0] = bunny[0] - 1 : tempB[0] = bunny[0];
-			cout << "Think up" << endl;
-			break;
-		case 1: (bunny[1] > 0) ? tempB[1] = bunny[1] - 1 : tempB[1] = bunny[1];
-			cout << "Think left" << endl;
-			break;	
-		case 2: (bunny[0] < size - 1) ? tempB[0] = bunny[0] + 1 : tempB[0] = bunny[0];
-			cout << "Think down" << endl;
-			break;
-		case 3: (bunny[1] < size - 1) ? tempB[1] = bunny[1] + 1 : tempB[1] = bunny[1];
-			cout << "Think right" << endl;
-			break;
-	}
-	
-	bunny[0] = tempA[0];
-	bunny[1] = tempA[1];
-	
-	if(abs(tempA[0] - plant[0]) + abs(tempA[1] - plant[1]) > abs(tempB[0] - plant[0]) + abs(tempB[1] - plant[1])){
-		cout << "Adapting!" << endl;
-		bunnyBrain->adapt();
-	}
+	char temp;
+	int myDecision = 0;
+	cout << "What would you do : " ;
+	cin >> temp;
+	myDecision = atoi(temp);
+	if(decision != myDecision)
+		bunnyBrain->adapt(myDecision);
 	
 }
