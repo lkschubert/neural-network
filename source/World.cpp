@@ -18,7 +18,7 @@ World::World(){
 	plant[1] = rand() % size;
 	bunny[0] = rand() % size;
 	bunny[1] = rand() % size;
-	bunnyBrain = new Brain(4, 2, 8, 4);
+	bunnyBrain = new Brain(4, 3, 5, 4);
 }
 
 
@@ -47,10 +47,10 @@ void World::update(){
 	inputs.clear();
 	
 	double inputsT[4];
-	inputsT[0] = (plant[0] - bunny[0] > 0) ? (double)abs(plant[0] - bunny[0]) / (double) size : 0;
-	inputsT[1] = (plant[0] - bunny[0] < 0) ? (double)abs(plant[0] - bunny[0]) / (double) size : 0;
-	inputsT[2]= (plant[1] - bunny[1] < 0) ? (double)abs(plant[1] - bunny[1]) / (double) size : 0;
-	inputsT[3] = (plant[1] - bunny[1] > 0) ? (double)abs(plant[1] - bunny[1]) / (double) size : 0;
+	inputsT[0] = (bunny[0] - plant[0] > 0) ? (double)abs(bunny[0] - plant[0]) / (double) size : 0;
+	inputsT[1] = (bunny[1] - plant[1] > 0) ? (double)abs(bunny[1] - plant[1]) / (double) size : 0;
+	inputsT[2] = (bunny[0] - plant[0] < 0) ? (double)abs(bunny[0] - plant[0]) / (double) size : 0;
+	inputsT[3] = (bunny[1] - plant[1] < 0) ? (double)abs(bunny[1] - plant[1]) / (double) size : 0;
 	inputs.push_back(inputsT[0]);
 	inputs.push_back(inputsT[1]);
 	inputs.push_back(inputsT[2]);
@@ -60,23 +60,20 @@ void World::update(){
 	int tempA[2] = {bunny[0], bunny[1]};
 	switch (decision){
 		case 0: (bunny[0] > 0) ? tempA[0] = bunny[0] - 1 : tempA[0] = bunny[0];
-			cout << "Move up" << endl;
 			break;
 		case 1: (bunny[1] > 0) ? tempA[1] = bunny[1] - 1 : tempA[1] = bunny[1];
-			cout << "Move left" << endl;
 			break;	
 		case 2: (bunny[0] < size - 1) ? tempA[0] = bunny[0] + 1 : tempA[0] = bunny[0];
-			cout << "Move down" << endl;
 			break;
 		case 3: (bunny[1] < size - 1) ? tempA[1] = bunny[1] + 1 : tempA[1] = bunny[1];
-			cout << "Move right" << endl;
 			break;
+		default: cout << "What the fuck" << endl;
 	}
 	
 	bunny[0] = tempA[0];
 	bunny[1] = tempA[1];
 	
-	if(age < 10000){
+	if(age < 1000000){
 		int best = 0;
 		double largest = 0;
 		for(int i = 0; i < 4; i++){

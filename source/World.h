@@ -34,6 +34,10 @@ public :
 	 */
 	void displayWorld ();
 
+	/**
+	 * Returns the age
+	 */
+	int getAge (){return age;};
 };
 
 #endif
