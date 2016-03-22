@@ -28,7 +28,7 @@ void World::displayWorld(){
 			if(plant[0] == i && plant[1] == j){
 				cout << "^";
 			}
-			else if(bunny[0] == i && bunny[1] == j){
+			else if(actor[0] == i && actor[1] == j){
 				cout << "&";
 			}
 			else {
@@ -47,31 +47,31 @@ void World::update(){
 	inputs.clear();
 	
 	double inputsT[4];
-	inputsT[0] = (bunny[0] - plant[0] > 0) ? (double)abs(bunny[0] - plant[0]) / (double) size : 0;
-	inputsT[1] = (bunny[1] - plant[1] > 0) ? (double)abs(bunny[1] - plant[1]) / (double) size : 0;
-	inputsT[2] = (bunny[0] - plant[0] < 0) ? (double)abs(bunny[0] - plant[0]) / (double) size : 0;
-	inputsT[3] = (bunny[1] - plant[1] < 0) ? (double)abs(bunny[1] - plant[1]) / (double) size : 0;
+	inputsT[0] = (actor[0] - plant[0] > 0) ? (double)abs(actor[0] - plant[0]) / (double) size : 0;
+	inputsT[1] = (actor[1] - plant[1] > 0) ? (double)abs(actor[1] - plant[1]) / (double) size : 0;
+	inputsT[2] = (actor[0] - plant[0] < 0) ? (double)abs(actor[0] - plant[0]) / (double) size : 0;
+	inputsT[3] = (actor[1] - plant[1] < 0) ? (double)abs(actor[1] - plant[1]) / (double) size : 0;
 	inputs.push_back(inputsT[0]);
 	inputs.push_back(inputsT[1]);
 	inputs.push_back(inputsT[2]);
 	inputs.push_back(inputsT[3]);
-	bunnyBrain->setInputs(inputs);
-	int decision = bunnyBrain->think();
-	int tempA[2] = {bunny[0], bunny[1]};
+	thisBrain->setInputs(inputs);
+	int decision = thisBrain->think();
+	int tempA[2] = {actor[0], actor[1]};
 	switch (decision){
-		case 0: (bunny[0] > 0) ? tempA[0] = bunny[0] - 1 : tempA[0] = bunny[0];
+		case 0: (actor[0] > 0) ? tempA[0] = actor[0] - 1 : tempA[0] = actor[0];
 			break;
-		case 1: (bunny[1] > 0) ? tempA[1] = bunny[1] - 1 : tempA[1] = bunny[1];
+		case 1: (actor[1] > 0) ? tempA[1] = actor[1] - 1 : tempA[1] = actor[1];
 			break;	
-		case 2: (bunny[0] < size - 1) ? tempA[0] = bunny[0] + 1 : tempA[0] = bunny[0];
+		case 2: (actor[0] < size - 1) ? tempA[0] = actor[0] + 1 : tempA[0] = actor[0];
 			break;
-		case 3: (bunny[1] < size - 1) ? tempA[1] = bunny[1] + 1 : tempA[1] = bunny[1];
+		case 3: (actor[1] < size - 1) ? tempA[1] = actor[1] + 1 : tempA[1] = actor[1];
 			break;
 		default: cout << "What the fuck" << endl;
 	}
 	
-	bunny[0] = tempA[0];
-	bunny[1] = tempA[1];
+	actor[0] = tempA[0];
+	actor[1] = tempA[1];
 	
 	if(age < 1000000){
 		int best = 0;
@@ -83,14 +83,14 @@ void World::update(){
 			}
 		}
 		if(decision != best){
-			bunnyBrain->adapt(best);
+			thisBrain->adapt(best);
 		}
 	}
-	if (bunny[0] == plant[0] && bunny[1] == plant[1]){
+	if (actor[0] == plant[0] && actor[1] == plant[1]){
 		plant[0] = rand() % size;
 		plant[1] = rand() % size;
-		bunny[0] = rand() % size;
-		bunny[1] = rand() % size;
+		actor[0] = rand() % size;
+		actor[1] = rand() % size;
 	}
 	
 }
