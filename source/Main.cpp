@@ -13,7 +13,7 @@ using namespace std;
 int main(int argc, char** argv){
 	World myWorld;
 	while(true){
-		if(myWorld.getAge() > 1000000){
+		if(myWorld.getAge() > 9995){
 			system("clear");
 			myWorld.displayWorld();
 			cin.get();
