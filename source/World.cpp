@@ -73,7 +73,7 @@ void World::update(){
 	actor[0] = tempA[0];
 	actor[1] = tempA[1];
 	
-	if(age < 1000000){
+	if(age < 10000){
 		int best = 0;
 		double largest = 0;
 		for(int i = 0; i < 4; i++){
