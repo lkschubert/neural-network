@@ -16,9 +16,9 @@ World::World(){
 	size = 10;
 	plant[0] = rand() % size;
 	plant[1] = rand() % size;
-	bunny[0] = rand() % size;
-	bunny[1] = rand() % size;
-	bunnyBrain = new Brain(4, 3, 5, 4);
+	actor[0] = rand() % size;
+	actor[1] = rand() % size;
+	thisBrain = new Brain(4, 3, 5, 4);
 }
 
 

@@ -15,8 +15,8 @@ private :
 	int size;
 	int age;
 	int plant[2];
-	int bunny[2];
-	Brain* bunnyBrain;
+	int actor[2];
+	Brain* thisBrain;
 
 public :
 	/**
