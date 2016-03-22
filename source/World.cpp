@@ -70,6 +70,9 @@ void World::update(){
 		default: cout << "What the fuck" << endl;
 	}
 	
+	if(age > 99995){
+		cout << decision << endl;
+	}
 	actor[0] = tempA[0];
 	actor[1] = tempA[1];
 	
